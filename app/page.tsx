@@ -41,16 +41,16 @@ export default function HomePage() {
         <div
           className={cx(
             wrap,
-            "grid grid-cols-1 items-center gap-2 py-7 sm:py-12 min-[900px]:grid-cols-[1.1fr_0.9fr] min-[900px]:gap-8 min-[900px]:py-16"
+            "grid grid-cols-1 items-center gap-2 py-7 sm:py-12 min-[900px]:grid-cols-[1.1fr_0.9fr] min-[900px]:gap-8 min-[900px]:py-16",
           )}
         >
           <div>
             <h1 className="max-w-[17ch] font-display text-[clamp(2.5rem,8vw,4.75rem)] font-bold leading-[1.05]">
-              Pick your lifts. Build today&apos;s plan.
+              TRAIN WITH INTENT. LOG EVERY SET.
             </h1>
             <p className="mt-4 max-w-[46ch] text-[clamp(1.02rem,2.2vw,1.2rem)] text-noir/80">
-              Browse the library, add up to five lifts to today&apos;s plan, and watch the minutes and calories add up
-              before you even pick up a bar.
+              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
+              into today's plan, and watch the week's work add up.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#library" className={btn.dark}>
@@ -75,14 +75,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="library" className={cx(wrap, "scroll-mt-20 py-7 sm:py-14")} aria-labelledby="library-title">
+      <section
+        id="library"
+        className={cx(wrap, "scroll-mt-20 py-7 sm:py-14")}
+        aria-labelledby="library-title"
+      >
         <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="library-title" className={pageTitle}>
               The Library
             </h2>
             <p className="mt-1.5 text-muted">
-              {count ? `${count} lifts covering every major muscle group.` : "Lifts covering every major muscle group."}
+              {count
+                ? `${count} lifts covering every major muscle group.`
+                : "Lifts covering every major muscle group."}
             </p>
           </div>
 
@@ -102,7 +108,11 @@ export default function HomePage() {
         </div>
 
         {groups.length > 1 && (
-          <div className="mb-5 flex gap-2 overflow-x-auto pb-1.5" role="group" aria-label="Filter by muscle group">
+          <div
+            className="mb-5 flex gap-2 overflow-x-auto pb-1.5"
+            role="group"
+            aria-label="Filter by muscle group"
+          >
             {groups.map((g) => (
               <button
                 key={g}
@@ -113,7 +123,7 @@ export default function HomePage() {
                   "min-h-10 flex-none cursor-pointer rounded-full border-2 px-4 py-1.5 text-[0.95rem] font-medium transition-colors",
                   g === group
                     ? "border-noir bg-noir text-volt"
-                    : "border-line bg-surface text-ink hover:border-ink"
+                    : "border-line bg-surface text-ink hover:border-ink",
                 )}
               >
                 {g}
@@ -125,7 +135,10 @@ export default function HomePage() {
         {loading && !data && <CardSkeletons />}
         {error && !data && <ErrorState message={error} onRetry={retry} />}
         {data && visible.length === 0 && (
-          <EmptyState title="No lifts match your search" text="Try a different name, or clear the muscle group filter.">
+          <EmptyState
+            title="No lifts match your search"
+            text="Try a different name, or clear the muscle group filter."
+          >
             <button
               type="button"
               className={btn.primary}
